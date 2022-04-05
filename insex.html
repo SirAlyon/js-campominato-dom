@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <title>CAMPOMINATO GRID</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+    <header id="site_header" class="px-5 container">
+
+        <div class="logo d-flex align-items-center">
+            <img id="logo" src="./assets/img/photo_2022-04-04_14-08-55.jpg" alt="">
+            <h2 class="fw-bold">Campo Minato</h2>
+        </div>
+
+        <div class="select">
+            
+            <label for="difficulty">Difficoltà:</label>
+
+            <select name="difficulties" id="difficulty">
+                <option>Easy</option> 
+                <option>Medium</option> 
+                <option>Hard</option>
+            </select>
+            <button type="submit" id="submit" class="btn btn-primary">Play</button>
+        </div>
+ 
+    </header>
+
+
+
+    <main id="site_main" class="py-5 body-c-height d-flex justify-content-center">
+        <div class="w-50 d-flex justify-content-center">
+            <div class="cells" id="clear">
+                
+            </div>
+        </div>
+    </main>
+
+
+
+    <footer id="site_footer">
+        <div class="container px-5">
+            Made with &hearts; by <a href="">Boolean</a>
+        </div>
+    </footer>
+
+
+
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

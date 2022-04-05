@@ -1,0 +1,67 @@
+*{
+    margin: 0;padding: 0;box-sizing: border-box;
+}
+
+#site_header{
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1rem;
+}
+
+#site_main{
+    background-color:  rgba(127, 255, 212, 1);
+    user-select: none;
+}
+
+#site_footer{
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.body-c-height{
+    height: calc(100vh - 170px);
+}
+
+#logo{
+    max-height: 80px;
+}
+
+#difficulty{
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 200px;
+}
+
+.cell{
+    aspect-ratio: 1 / 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell-width-10{
+    width: 10%;
+}
+
+.cell-width-9{
+    width: calc(100% / 9)
+}
+
+.cell-width-7{
+    width: calc(100% / 7)
+}
+
+.active{
+    background-color: rgba(100, 149, 237, 1);
+    color: white;
+}
+
+.cells{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
