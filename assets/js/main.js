@@ -68,7 +68,7 @@ function generateNumbers(min, max) {
     return gridNumbers
 }
 
-//Funzione per rendere active al click l'elemento della griglia selezionato
+/* //Funzione per rendere active al click l'elemento della griglia selezionato
  function cellsClick(select, className) {
     const cells = allCells(select)
     for (let i=0; i < cells.length; i++){
@@ -77,7 +77,7 @@ function generateNumbers(min, max) {
             cell.classList.toggle(className)
         })
     }
-}
+} */
 
 //Funzione per generare numeri casuali tra min e max
 function getRandomNumbers(min, max) {
@@ -108,20 +108,26 @@ function cellsClick(select, className, classNameBomb) {
     const cells = allCells(select)
     let bombNumbersArray = generateBomb (1, 100)
     console.log(bombNumbersArray);
+    
     for (let i=0; i < cells.length; i++){
         const cell = cells[i]
-        console.log(cell.innerHTML);
+        //console.log(cell.innerHTML);
         let cellNumber = Number(cell.innerHTML)
-        console.log(cellNumber);
-        cell.addEventListener('click', function(){
+        //console.log(cellNumber);
+           cell.addEventListener('click', function(){
             if (bombNumbersArray.includes(cellNumber)){
                 cell.classList.add(classNameBomb)
+                
             } else {
                 cell.classList.add(className)
             }
-        })
+        }) 
+
+        
     }
 }
 
 
 /* console.log(cellsClick('.cell', 'active', 'bomb')); */
+
+//Funzione per terminare la partita in caso di click sulla bomba
