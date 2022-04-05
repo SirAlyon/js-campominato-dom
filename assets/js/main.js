@@ -106,18 +106,16 @@ generateBomb (1, 100)
 function cellsClick(select, className, classNameBomb) {
     const cells = allCells(select)
     let bombNumbersArray = generateBomb (1, 100)
+    console.log(bombNumbersArray);
     for (let i=0; i < cells.length; i++){
         const cell = cells[i]
-        if (bombNumbersArray.includes(cell)){
-            cell.addEventListener('click', function(){
-            cell.classList.add(classNameBomb)
-            })
-        } else {
-            cell.addEventListener('click', function(){
-            cell.classList.toggle(className)
-            })
-        }
-        
+        cell.addEventListener('click', function(){
+            if (!bombNumbersArray.includes(cell)){
+                cell.classList.add(className)
+            } else {
+                cell.classList.add(classNameBomb)
+            }
+        })
     }
 }
 
