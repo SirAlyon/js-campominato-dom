@@ -107,7 +107,7 @@ function generateBomb (min, max){
 function cellsClick(select, className, classNameBomb) {
     const cells = allCells(select)
     let bombNumbersArray = generateBomb (1, 100)
-    let userpoints = []
+    let userpoints = [] //Pusho in questo array tutti i numeri delle celle cliccate e senza bombe
     console.log(bombNumbersArray);
     
     for (let i=0; i < cells.length; i++){
@@ -118,8 +118,9 @@ function cellsClick(select, className, classNameBomb) {
            cell.addEventListener('click', function(){
             if (bombNumbersArray.includes(cellNumber)){
                 cell.classList.add(classNameBomb)
-                alert(`Hai perso! Hai fatto ${userpoints.length} punti!`)
-                location.reload(); 
+                /* alert(`Hai perso! Hai fatto ${userpoints.length} punti!`)
+                location.reload();  */
+                endGame()
             } else {
                 cell.classList.add(className)
                 userpoints.push(cellNumber)
@@ -129,6 +130,14 @@ function cellsClick(select, className, classNameBomb) {
     }
 }
 
+function endGame() {
+    const cells = allCells('.cell')
+    for (let i=0; i < cells.length; i++){
+        const cell = cells[i]
+        removeEventListener('click', cell);
+
+    }
+}
 
 
 /* console.log(cellsClick('.cell', 'active', 'bomb')); */
