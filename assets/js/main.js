@@ -76,3 +76,26 @@ function cellsClick(select, className) {
         })
     }
 }
+
+//Funzione per generare numeri casuali tra min e max
+function getRandomNumbers(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+}
+  
+//Devo inserire i numeri delle bombe generati in delle cell casuali, i numeri delle bombe non si possno ripetere
+function generateBomb (min, max){
+    let bombNumbersArray = []
+    for (let i=1; i <= 16; i++){
+        let bombNumber = getRandomNumbers(min, max)
+        if (!bombNumbersArray.includes(bombNumber)){
+            bombNumbersArray.push(bombNumber)
+        } else {
+            i = i -1
+        }
+        
+        console.log(bombNumber);
+    }
+    console.log(bombNumbersArray);
+}
+
+generateBomb (1, 100)
