@@ -1,4 +1,7 @@
 const cells = document.querySelector('.cells')
+bombNumbersArray = generateBomb (1, 100)
+console.log(bombNumbersArray);
+userpoints = []
 
 document.getElementById('submit').addEventListener('click', function(){
 
@@ -20,6 +23,7 @@ document.getElementById('submit').addEventListener('click', function(){
         generateCells(81,'cell','cell-width-9', 'div')
         allCells('.cell')
         cellsContent('.cell', 1, 81)
+
     } else if (difficulty === 'Hard'){
         generateCells(49,'cell','cell-width-7', 'div')
         allCells('.cell')
@@ -95,7 +99,7 @@ function generateBomb (min, max){
             i = i -1
         }
         
-        console.log(bombNumber);
+        //console.log(bombNumber);
     }
     console.log(bombNumbersArray);
     return bombNumbersArray
@@ -106,39 +110,41 @@ function generateBomb (min, max){
 //Se un valore dell'array bombNumbersArray è cliccato sulla casella corrispondente allora scoppia la bomba
 function cellsClick(select, className, classNameBomb) {
     const cells = allCells(select)
-    let bombNumbersArray = generateBomb (1, 100)
-    let userpoints = [] //Pusho in questo array tutti i numeri delle celle cliccate e senza bombe
-    console.log(bombNumbersArray);
-    
+
     for (let i=0; i < cells.length; i++){
         const cell = cells[i]
         //console.log(cell.innerHTML);
         let cellNumber = Number(cell.innerHTML)
         //console.log(cellNumber);
-           cell.addEventListener('click', function(){
-               console.log(cell);
-            if (bombNumbersArray.includes(cellNumber)){
-                cell.classList.add(classNameBomb)
-                /* alert(`Hai perso! Hai fatto ${userpoints.length} punti!`)
-                location.reload();  */
-                endGame()
-            } else {
-                cell.classList.add(className)
-                userpoints.push(cellNumber)
-                console.log(userpoints);
-            }
-        })   
+           cell.addEventListener('click', checkCell)  
     }
 }
 
 function endGame() {
+    
+    
     const cells = allCells('.cell')
     for (let i=0; i < cells.length; i++){
+        /* console.log(i) */
         const cell = cells[i]
-        removeEventListener('click', cell);
+        cell.removeEventListener('click', checkCell)
+
     }
+    alert(`Hai perso! Hai totalizzato ${userpoints.length} punti!` )
 }
 
+let checkCell = function () {
+    let cellNumber = Number(this.innerHTML)
+    
+    if (bombNumbersArray.includes(cellNumber)){
+        this.classList.add('bomb');
+        endGame();
+    } else {
+        this.classList.add('active')
+        userpoints.push(cellNumber)
+        console.log(userpoints);
+    }
+}
 
 /* console.log(cellsClick('.cell', 'active', 'bomb')); */
 
