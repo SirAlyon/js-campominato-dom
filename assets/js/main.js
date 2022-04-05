@@ -116,6 +116,7 @@ function cellsClick(select, className, classNameBomb) {
         let cellNumber = Number(cell.innerHTML)
         //console.log(cellNumber);
            cell.addEventListener('click', function(){
+               console.log(cell);
             if (bombNumbersArray.includes(cellNumber)){
                 cell.classList.add(classNameBomb)
                 /* alert(`Hai perso! Hai fatto ${userpoints.length} punti!`)
@@ -135,7 +136,6 @@ function endGame() {
     for (let i=0; i < cells.length; i++){
         const cell = cells[i]
         removeEventListener('click', cell);
-
     }
 }
 
