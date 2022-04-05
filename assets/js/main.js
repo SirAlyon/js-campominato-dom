@@ -111,8 +111,10 @@ function cellsClick(select, className, classNameBomb) {
     for (let i=0; i < cells.length; i++){
         const cell = cells[i]
         console.log(cell.innerHTML);
+        let cellNumber = Number(cell.innerHTML)
+        console.log(cellNumber);
         cell.addEventListener('click', function(){
-            if (bombNumbersArray.includes(cell.innerHTML)){
+            if (bombNumbersArray.includes(cellNumber)){
                 cell.classList.add(classNameBomb)
             } else {
                 cell.classList.add(className)
