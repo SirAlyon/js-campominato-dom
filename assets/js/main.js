@@ -26,6 +26,7 @@ document.getElementById('submit').addEventListener('click', function(){
         cellsContent('.cell', 1, 49)
     }
 
+
     cellsClick('.cell', 'active', 'bomb')
 
 })
@@ -36,7 +37,8 @@ function cellsContent(select, min, max) {
     const cellsContent = allCells(select)
     for (let i=0; i < cellsContent.length; i++){
         const gridNumber = generateNumbers(min, max)
-        cellsContent[i].innerHTML = `<span>${gridNumber[i]}</span>`
+        cellsContent[i] = document.createElement('span')
+        cellsContent[i].append(gridNumber[i])
     }
 }
 
@@ -67,7 +69,7 @@ function generateNumbers(min, max) {
 }
 
 //Funzione per rendere active al click l'elemento della griglia selezionato
-/* function cellsClick(select, className) {
+ function cellsClick(select, className) {
     const cells = allCells(select)
     for (let i=0; i < cells.length; i++){
         const cell = cells[i]
@@ -75,7 +77,7 @@ function generateNumbers(min, max) {
             cell.classList.toggle(className)
         })
     }
-} */
+}
 
 //Funzione per generare numeri casuali tra min e max
 function getRandomNumbers(min, max) {
@@ -99,7 +101,6 @@ function generateBomb (min, max){
     return bombNumbersArray
 }
 
-generateBomb (1, 100)
 
 
 //Se un valore dell'array bombNumbersArray è cliccato sulla casella corrispondente allora scoppia la bomba
@@ -109,11 +110,12 @@ function cellsClick(select, className, classNameBomb) {
     console.log(bombNumbersArray);
     for (let i=0; i < cells.length; i++){
         const cell = cells[i]
+        console.log(cell.innerHTML);
         cell.addEventListener('click', function(){
-            if (!bombNumbersArray.includes(cell)){
-                cell.classList.add(className)
-            } else {
+            if (bombNumbersArray.includes(cell.innerHTML)){
                 cell.classList.add(classNameBomb)
+            } else {
+                cell.classList.add(className)
             }
         })
     }
